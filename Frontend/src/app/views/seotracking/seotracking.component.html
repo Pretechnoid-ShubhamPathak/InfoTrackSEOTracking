@@ -1,0 +1,100 @@
+<mat-card style="height: 100vw;width: 100vw;">
+<div *ngIf="!isPageLoaded">
+  <div class="success-field" style="text-align: center; font-size: 16px;"  [innerHTML]="errorMessage"></div>
+  </div>
+
+<div *ngIf="isPageLoaded">
+  <br><br>
+  <p-toast></p-toast>
+<div style="text-align: center;">
+
+  <h1>Infotrack SEO Tracking</h1>
+  <h3>Track SEO in Smarter way</h3>
+  <br><br><br>
+
+  <form class="form">
+    <mat-form-field class="custom-width">
+      <mat-label>Enter Keywords</mat-label>
+      <input type="keyword" matInput [formControl]="keywordFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. land registry searches">
+      <mat-hint>Ex. land registry searches</mat-hint>
+      <mat-error *ngIf="keywordFormControl.hasError('required')">
+        Keyword is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="custom-width-lpadding">
+      <mat-label>Enter Url</mat-label>
+      <input type="url" matInput [formControl]="urlFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. www.infotrack.co.uk">
+      <mat-hint>Ex. www.infotrack.co.uk</mat-hint>
+      <mat-error *ngIf="urlFormControl.hasError('required')">
+        URL is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br><br>
+
+    <mat-form-field class="custom-width-rpadding">
+      <mat-label>Select Search Engine</mat-label>
+      <mat-select [formControl]="searchengines"  multiple required>
+        <mat-select-trigger>
+          {{searchengines.value?.[0] || ''}}
+          <span *ngIf="(searchengines.value?.length || 0) > 1">
+            (+{{(searchengines.value?.length || 0) - 1}} {{searchengines.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let searchengine of lstsearchengine" [value]="searchengine">{{searchengine}}</mat-option>
+      </mat-select>
+      <mat-hint>Ex. Google</mat-hint>
+      <mat-error *ngIf="searchengines.hasError('required')">
+        Select atleast <strong>one</strong> SearchEngine
+      </mat-error>
+    </mat-form-field>
+
+    <button (click)="onSubmit()" mat-raised-button color="primary" style="font-size: 30px;">
+      <mat-icon>search</mat-icon>
+      Search</button>
+  </form>
+
+</div>
+
+<br><br><br>
+<div *ngIf="dataSource">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- id Column -->
+<ng-container matColumnDef="id">
+  <th mat-header-cell *matHeaderCellDef> No. </th>
+  <td mat-cell *matCellDef="let element;let i = id"> {{i+1}} </td>
+</ng-container>
+
+<!-- Keywords Column -->
+<ng-container matColumnDef="keywords">
+  <th mat-header-cell *matHeaderCellDef> Keywords </th>
+  <td mat-cell *matCellDef="let element"> {{element.keywords}} </td>
+</ng-container>
+
+<!-- url Column -->
+<ng-container matColumnDef="url">
+  <th mat-header-cell *matHeaderCellDef> URL </th>
+  <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+</ng-container>
+
+<!-- SearchEngine Column -->
+<ng-container matColumnDef="searchEngine">
+  <th mat-header-cell *matHeaderCellDef> Search Engine </th>
+  <td mat-cell *matCellDef="let element"> {{element.searchEngine}} </td>
+</ng-container>
+
+<!-- Ranking Column -->
+<ng-container matColumnDef="ranking">
+  <th mat-header-cell *matHeaderCellDef> Ranking # </th>
+  <td mat-cell *matCellDef="let element"> {{element.ranking}} </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+  </div>
+</mat-card>
+
+

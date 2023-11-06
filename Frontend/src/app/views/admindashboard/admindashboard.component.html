@@ -1,0 +1,24 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+  <mat-toolbar>Topic Allocation Hub</mat-toolbar>
+  <mat-nav-list class="nav-list">
+    <mat-list-item>Account</mat-list-item> <!-- <a [routerLink]="['./']"></a> -->
+    <mat-list-item><a [routerLink]="['./seotracking/']">SEO-Tracking</a></mat-list-item>
+    <mat-list-item><a [routerLink]="['./trackinghistory/']">Tracking-History</a></mat-list-item>
+    <mat-list-item><a [routerLink]="['./sendMail/']">Send Mail</a></mat-list-item>
+  </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">apps</mat-icon>
+      </button>
+      <span class="title"> {{user_name}} Dashboard</span>
+      <div matTooltip="LOGGED_IN Email" style="cursor:pointer; margin-right: 60px; font-size: 13px;" class="topright">{{user_email}}</div>
+      <div matTooltip="LOGOUT" style="cursor:pointer; font-size: 25px;" class="topright" (click)="logout()"><mat-icon aria-label="Side nav toggle icon">input</mat-icon></div>
+    </mat-toolbar>
+    <router-outlet style="background-color: transparent;"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,62 @@
+<mat-card style="height: 100vw;width: 100vw;">
+<div *ngIf="!isPageLoaded">
+  <div class="success-field" style="text-align: center; font-size: 16px;"  [innerHTML]="errorMessage"></div>
+  </div>
+
+<div *ngIf="isPageLoaded">
+  <br><br>
+  <p-toast></p-toast>
+<div style="text-align: center;">
+
+  <h1>SEO Search Tracking History</h1>
+  <h4>Whatever you search!! <br>we keep a track of it</h4>
+  <br><br>
+  <div *ngIf="dataSource">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Keywords Column -->
+    <ng-container matColumnDef="keywords">
+      <th mat-header-cell *matHeaderCellDef> Keywords </th>
+      <td mat-cell *matCellDef="let element"> {{element.keywords}} </td>
+    </ng-container>
+
+    <!-- url Column -->
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> URL </th>
+      <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+    </ng-container>
+
+    <!-- SearchEngine Column -->
+    <ng-container matColumnDef="searchEngine">
+      <th mat-header-cell *matHeaderCellDef> Search Engine </th>
+      <td mat-cell *matCellDef="let element"> {{element.searchEngine}} </td>
+    </ng-container>
+
+    <!-- Ranking Column -->
+    <ng-container matColumnDef="ranking">
+      <th mat-header-cell *matHeaderCellDef> Ranking # </th>
+      <td mat-cell *matCellDef="let element"> {{element.ranking}} </td>
+    </ng-container>
+
+    <!-- SearchedAt Column -->
+    <ng-container matColumnDef="searchedAt">
+      <th mat-header-cell *matHeaderCellDef> Searched On# </th>
+      <td mat-cell *matCellDef="let element"> {{element.searchedAt}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+</div>
+</div>
+</div>
+</mat-card>
+
+

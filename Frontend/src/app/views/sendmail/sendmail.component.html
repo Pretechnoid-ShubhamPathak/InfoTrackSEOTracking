@@ -1,0 +1,70 @@
+<mat-card style="height: 100vw;width: 100vw;">
+<div *ngIf="!isPageLoaded">
+  <div class="success-field" style="text-align: center; font-size: 16px;"  [innerHTML]="errorMessage"></div>
+  </div>
+
+<div *ngIf="isPageLoaded">
+  <br><br>
+  <p-toast></p-toast>
+<h2>Send Email</h2>
+  <form (ngSubmit)="sendEmail()" >
+    <div class="form-group" [formGroup]="send_Email">
+      <mat-form-field class="full-width" appearance="outline">
+      <mat-label>To Email</mat-label>
+      <!-- <input matInput type="email" id="toEmail" formControlName="fctoEmail" [(ngModel)]="toEmail" required /> -->
+
+
+      <mat-label>Select User Name</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Topic selection">
+        <mat-chip-row *ngFor="let user of selectedUsers" (removed)="remove(user.id)">
+          {{user.firstName + ' ' + user.lastName}}
+          <button matChipRemove [attr.aria-label]="'remove ' + user.id">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+      <input placeholder="User Name..." #userInput [formControl]="selectUser"
+        [matChipInputFor]="chipGrid" [matAutocomplete]="auto" [disabled]="isUserDisable"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        />
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let user of filteredUsers | async" [value]="user.id">
+          {{user.firstName + ' ' + user.lastName + ' '+ user.emailId +' - ' +user.userRole}}
+        </mat-option>
+      </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="form-group" [formGroup]="send_Email">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label >CC Email</mat-label>
+      <input matInput type="email" id="ccEmail" formControlName="fcccEmail" [(ngModel)]="ccEmail" />
+    </mat-form-field>
+    </div>
+    <div class="form-group" [formGroup]="send_Email">
+      <mat-form-field class="full-width" appearance="outline">
+      <mat-label for="bccEmail">BCC Email</mat-label>
+      <input matInput type="email" id="bccEmail" formControlName="fcbccEmail" [(ngModel)]="bccEmail" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" [formGroup]="send_Email">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label for="subject">Subject</mat-label>
+      <input matInput type="text" id="subject" #subject formControlName="fcsubject" maxlength="50" required />
+      <mat-hint align="end">{{subject.value.length}}/50</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" [formGroup]="send_Email">
+      <mat-form-field class="full-width" appearance="outline">
+      <mat-label for="message">Message</mat-label>
+      <textarea matInput id="message" formControlName="fcmessage" [(ngModel)]="emailMessage" rows="4" required></textarea>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Send Email</button>
+  </form>
+  </div>
+</mat-card>
+
+

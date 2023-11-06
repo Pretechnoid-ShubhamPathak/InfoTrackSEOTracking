@@ -1,0 +1,12 @@
+<h1 mat-dialog-title [innerHtml] = "_title"></h1>
+<div mat-dialog-content [innerHtml]="'<p>' + _message + '</p>'">
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]>Cancel</button>
+    <span *ngIf="_action != ''">
+      <button mat-raised-button color="warn" [mat-dialog-close]="true">
+        <span *ngIf="_action === 'delete'">Delete</span>
+        <span *ngIf="_action === 'confirm'">Confirm</span>
+      </button>
+    </span>
+</div>

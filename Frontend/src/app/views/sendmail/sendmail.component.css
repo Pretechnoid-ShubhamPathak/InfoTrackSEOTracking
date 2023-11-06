@@ -1,0 +1,126 @@
+/* #passcode {
+} */
+#page{
+  box-shadow: -17px 16px 32px 2px rgba(79,79,79,1);
+  max-width:350px;
+}
+
+.form{
+  margin: 10px auto;
+}
+
+.leftShift{
+  text-align: left;
+}
+.rightShift{
+  text-align: right;
+}
+
+.tMargin{
+ margin-top: 15px;
+}
+
+.element{
+  margin-left: 35%;
+}
+
+button {
+  font-size: 25px;
+  height: 80px;
+}
+
+.h2{
+  text-align: center;
+}
+
+
+.mobile-label {
+  display: none;
+}
+
+.full-width {
+  width: 60%;
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+}
+
+.button-remove-rows {
+  margin-left: 40%;
+  margin-right: 10px;
+}
+
+.button-add-rows{
+  margin-right: 10px;
+}
+
+
+.button-size {
+  font-size: large;
+}
+
+.btn-edit {
+  color: green;
+}
+
+/* @media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+  /*
+  .mat-table .mat-row:nth-child(even) {background: #CCC}
+  .mat-table .mat-row:nth-child(odd) {background: #FFF}
+  */
+  /*.mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    font-weight: bold;
+    height:30px;
+    margin-bottom: 4%;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    /*content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    font-size: .85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+    .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
+} */

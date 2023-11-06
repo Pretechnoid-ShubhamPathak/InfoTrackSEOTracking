@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+#page{
+  box-shadow: -17px 16px 32px 2px rgba(79,79,79,1);
+}
+.h3{
+  text-align: center;
+  margin: 15px auto;
+  font-weight: 600;
+}
+.form{
+  margin: 25px auto;
+}
+
+.btn{
+  width : 100%;
+  margin : 15px auto;
+}
+
+label {
+  margin-bottom: 0.3rem !important;
+}
