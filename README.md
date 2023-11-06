@@ -35,6 +35,7 @@ SQL script will be named as Sql `Script.sql`
 
 ```node
 Go to browser & open [Localhost] url to use the application.
+Id :- admin  Password :- my-super-secret-password
 ```
 ### URL :- [Localhost](http://localhost:4200/seotracking)
 
