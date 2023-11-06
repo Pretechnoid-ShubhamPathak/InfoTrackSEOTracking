@@ -16,8 +16,8 @@
     <mat-form-field class="custom-width">
       <mat-label>Enter Keywords</mat-label>
       <input type="keyword" matInput [formControl]="keywordFormControl" [errorStateMatcher]="matcher"
-             placeholder="Ex. land registry searches">
-      <mat-hint>Ex. land registry searches</mat-hint>
+             placeholder="Ex. land registry services">
+      <mat-hint>Ex. land registry services</mat-hint>
       <mat-error *ngIf="keywordFormControl.hasError('required')">
         Keyword is <strong>required</strong>
       </mat-error>
