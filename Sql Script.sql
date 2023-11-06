@@ -1,3 +1,5 @@
+--Connection String is present at location "Backend/appsettings.Development.json"
+
 CREATE DATABASE itSeoTrack;
 
 CREATE TABLE [itSeoTrack].[dbo].[Users](
